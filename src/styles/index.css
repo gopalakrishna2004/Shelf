@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #F3F0E9;
+    --color-text: #242321;
+    --color-surface: #FFFFFF;
+    --color-surface-subtle: #FAF8F5;
+    --color-border: #E2DDD4;
+    --color-muted: #8C877D;
+    --color-stone: #DCD7CD;
+    --color-accent: #C94B36;
+  }
+
+  .dark {
+    --color-bg: #242321;
+    --color-text: #F3F0E9;
+    --color-surface: #2D2B29;
+    --color-surface-subtle: #33312E;
+    --color-border: #3A3834;
+    --color-muted: #A09B90;
+    --color-stone: #DCD7CD;
+    --color-accent: #C94B36;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Editorial selection highlight */
+  ::selection {
+    background-color: rgba(201, 75, 54, 0.22);
+    color: #C94B36;
+  }
+
+  /* Editorial serif styling */
+  h1, h2, h3, .font-editorial {
+    font-family: 'Newsreader', Georgia, serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "kern";
+  }
+
+  /* Eliminate browser-default high-contrast outline flicker on mouse clicks across buttons and interactive elements */
+  button,
+  [role="button"],
+  [type="button"],
+  [type="submit"],
+  [type="reset"] {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus:not(:focus-visible),
+  [role="button"]:focus:not(:focus-visible),
+  [type="button"]:focus:not(:focus-visible),
+  [type="submit"]:focus:not(:focus-visible),
+  [type="reset"]:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    outline: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+  }
+}
+
+/* Custom crisp scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 135, 125, 0.28);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 135, 125, 0.45);
+}
+
+/* Restrained focus ring with terracotta accent - strictly for keyboard navigation */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus {
+  outline: none;
+}
+.focus-ring:focus:not(:focus-visible) {
+  outline: none !important;
+}
+.focus-ring:focus-visible {
+  outline: none !important;
+  @apply ring-2 ring-shelf-terracotta/70 ring-offset-2 ring-offset-shelf-ivory dark:ring-offset-shelf-dark;
+}
+
+/* Tactile button animations */
+.btn-press {
+  transition: transform 120ms cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 120ms cubic-bezier(0.2, 0.8, 0.4, 1), background-color 150ms ease;
+}
+.btn-press:active:not(:disabled) {
+  transform: translateY(2px);
+}
